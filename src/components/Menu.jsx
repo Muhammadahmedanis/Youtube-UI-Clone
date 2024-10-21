@@ -16,15 +16,18 @@ import { IoHelpCircleOutline } from "react-icons/io5";
 import { MdOutlineSettingsBrightness } from "react-icons/md";
 import { MdOutlineArticle } from "react-icons/md";
 import { MdOutlineAccountCircle } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 function Menu({darkMode, setDarkMode}) {
   return (
     <Container>
         <Wrapper>
-            <Logo>
-                <Img src='https://static.vecteezy.com/system/resources/previews/023/986/704/non_2x/youtube-logo-youtube-logo-transparent-youtube-icon-transparent-free-free-png.png' />
-                YouTube
-            </Logo>
+            <Link to={'/'} style={{textDecoration: 'none', color: 'inherit'}}>
+                <Logo>
+                    <Img src='https://static.vecteezy.com/system/resources/previews/023/986/704/non_2x/youtube-logo-youtube-logo-transparent-youtube-icon-transparent-free-free-png.png' />
+                    YouTube
+                </Logo>
+            </Link>
             <Item>
                 <AiFillHome />
                 Home
@@ -49,7 +52,9 @@ function Menu({darkMode, setDarkMode}) {
             <Hr/>
             <Login>
                 Sign in to like videos, comment, and subscribe.
-                <Button><MdOutlineAccountCircle />SIGN IN</Button>
+                <Link to="/signin" style={{textDecoration: "none"}}>
+                    <Button><MdOutlineAccountCircle />SIGN IN</Button>
+                </Link>
             </Login>
             <Hr />
             <Title>BEST OF YOUTUBE</Title>
@@ -92,7 +97,7 @@ function Menu({darkMode, setDarkMode}) {
             </Item>
             <Item onClick={() => setDarkMode(!darkMode)}>
                 <MdOutlineSettingsBrightness />
-                Light Mode                
+                {darkMode ? "Light": "Dark"} Mode      
             </Item>
         </Wrapper>
     </Container>
@@ -102,15 +107,19 @@ function Menu({darkMode, setDarkMode}) {
 export default Menu
 
 const Container = styled.div`
-    flex: 1.2;
     background-color: ${({theme}) => theme.bg};
-    height: 100vh;
+    height: 100%;
     color: ${({theme}) => theme.text};
     font-size: 14px;
     position: sticky;
     top: 0;
+    // width: 100%;
+    @media (max-width: 525px) {
+        display: none;
+      }
 `
 const Wrapper = styled.div`
+    width: 150px;
     padding: 10px 26px;
 `
 const Logo = styled.div`
@@ -118,7 +127,6 @@ const Logo = styled.div`
     align-items: center;
     gap: 5px;
     font-weight: bold;
-    margin-bottom: 10px;
 `
 const Img = styled.img`
     height: 25px;
@@ -128,7 +136,10 @@ const Item = styled.div`
     align-items: center;
     gap: 20px;
     cursor: pointer;
-    padding: 7.5px 0;
+    padding: 6px 0;
+    &:hover{
+        background-color: ${({theme}) => theme.soft};
+    }
 `
 const Hr = styled.div`
     margin: 10px 0;

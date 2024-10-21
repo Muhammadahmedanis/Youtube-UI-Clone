@@ -11,6 +11,7 @@ import{
 } from 'react-router-dom'
 import Home from './pages/Home';
 import Video from './pages/Video';
+import Signin from './pages/Signin';
 
 function App() {
   const[darkMode, setDarkMode] = useState(true)
@@ -23,8 +24,9 @@ function App() {
         <Navbar />
         <Wrapper>
           <Routes>
-            <Route path="/" />
-            <Route path="/index" element={<Home />} />
+            {/* <Route path="/" /> */}
+            <Route path="/" element={<Home />} />
+            <Route path='signin' element={<Signin />}/>
             <Route path="video">
               <Route path=":id"element={<Video />} />
             </Route>
@@ -41,13 +43,14 @@ export default App
 
 const Container = styled.div`
   display: flex;
+  width: 100%;
   background-color: ${({theme}) => theme.bg};
 `
 
 const Main = styled.div`
-    flex: 7;
+  width: 100%;
 `
 
 const Wrapper = styled.div`
-
+    // padding: 22px;
 `

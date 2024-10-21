@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { MdOutlineAccountCircle } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
@@ -11,7 +12,9 @@ function Navbar() {
                 <Input type="text" placeholder='Search' />
                 <IoSearch />
             </Search>
-            <Button><MdOutlineAccountCircle />SIGN IN</Button>
+            <Link to="/signin" style={{textDecoration: "none"}}>
+                <Button><MdOutlineAccountCircle />SIGN IN</Button>
+            </Link>
         </Wrapper>
     </Container>
   )
@@ -23,19 +26,19 @@ const Container = styled.div`
     position: sticky;
     top: 0;
     background-color: ${({theme}) => theme.bgLighter};
-    height: 56px
+    height: auto;
 `
 const Wrapper = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
     height: 100%;
-    padding: 0 20px;
+    padding: 20px;
     position: relative;
 `
 const Search = styled.div`
     width: 40%;
-    position: absolute;
+    // position: absolute;
     left: 0;
     right: 0;
     margin: auto;

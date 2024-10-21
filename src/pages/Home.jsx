@@ -22,6 +22,8 @@ function Home() {
         <Card />
         <Card />
         <Card />
+        <Card />
+        <Card />
 
     </Container>
   )
@@ -31,7 +33,8 @@ export default Home
 
 const Container = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 23px;
     flex-wrap: wrap;
-
+    padding: 22px 0;
 `
